@@ -1,14 +1,29 @@
 import React from 'react'
-const PostItem = (props) => {
+import PropTypes from 'prop-types'
 
-    console.log(props.title)
-
+const PostItem = ({title, body}) => {
+    
     return (
 
-        <div style={{ backgroundColor: "lightblue" }}>
-            <h2>{props.title}</h2>
-            <p>{props.body}</p>
+        <div style={{ backgroundColor: "lightblue", margin: '10px', padding: '10px' }}>
+            <h2>{title}</h2>
+            <p>{body}</p>
         </div>
     )
+
 }
+PostItem.propTypes = {
+
+    title: PropTypes.string,
+    body: PropTypes.string
+
+}
+PostItem.defaultProps = {
+
+    title: '',
+    body: ''
+
+}
+
+
 export { PostItem }

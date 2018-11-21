@@ -2,11 +2,10 @@ import React from 'react'
 
 const Header = () => {
     return (
-        <header>
+        <header style={{ backgroundColor: 'red', padding: '10px' }}>
             <h1>
                 My React Blog
             </h1>
-
         </header>
     )
 }
