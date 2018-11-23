@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Header } from './partials/Header.js';
 import { Footer } from "./partials/Footer.js";
 import { fetchUsers } from "../services/UserService.js";
-import { UserLists } from "./users/UserList.js"
+import { UserList } from "./users/UserList.js"
 import { MyUser } from './users/UserListItem.js'
+import { UserGrid } from '../view/users/UserList.js'
+
 
 class App extends Component {
 
@@ -11,7 +13,8 @@ class App extends Component {
 
     super(props)
     this.state = {
-      users: []
+      users: [],
+      isGrid: false,
     };
 
   }
@@ -20,13 +23,32 @@ class App extends Component {
       .then((niz) => { this.setState({ users: niz }) });
   }
 
+  renderUsersListComponent = () => {
+    if (this.state.isGrid) {
+      return <UserGrid users={this.state.users} />
+    } else {
+      return <UserList users={this.state.users} />
+    }
+  }
+
+
+  changeLayout = () => {
+
+    this.setState({ isGrid: !this.state.isGrid })
+
+
+  }
+
+
+
   render() {
 
     return (
 
       <div>
         <Header />
-        <UserLists users={this.state.users} />
+        <button onClick={this.changeLayout}>toggle layout</button>
+        {this.renderUsersListComponent()}
         <Footer />
       </div>
 

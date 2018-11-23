@@ -1,38 +1,35 @@
 import React from "react";
 import User from '../../entities/User';
-import { MyUser } from "./UserListItem"
-
-const UserLists = (props) => {
+import { MyUser, MyUserGrid } from "./UserListItem"
 
 
+const UserList = (props) => {
     const listOfusers = props.users.map(function (user, index) {
-
-
-        const newDate = new Date(user.date)
-
-        const month = newDate.getMonth();
-        const year = newDate.getFullYear();
-        const day = newDate.getDate();
-
-        // console.log(newDate.getFullYear())
-
-        const fullDate = "Date of birth: " + day + ". " + year + ". " + (month + 1);
-
-        return <MyUser key={index} photo={user.photo} name={user.name} email={user.email} date={fullDate} />
-
+        return <MyUser key={index} user={user} />
 
     })
 
-
     return (
 
-        <div>{listOfusers}</div>
-
+        <div>
+            <button className='button'>Change View</button>
+            {listOfusers}
+        </div>
     )
-
-
-
 }
 
-export { UserLists }
+const UserGrid = (props) => {
+    const listOfusersGrid = props.users.map(function (user, index) {
+        return <MyUserGrid key={index} user={user} />
+    })
+
+    return (
+        <div className='container'>
+            <div class="row">
+                {listOfusersGrid}
+            </div>
+        </div>
+    )
+}
+export { UserList, UserGrid }
 

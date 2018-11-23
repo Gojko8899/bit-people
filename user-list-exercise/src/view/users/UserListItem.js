@@ -1,27 +1,52 @@
 import React from "react";
-import { User } from '../../entities/User.js'
-const MyUser = (porps) => {
-    console.log(porps.email)
+import { User } from '../../entities/User'
 
-    let splitted = porps.email.split('@')
-    let part1 = splitted[0];
-    let part1sliced = part1.slice(0, 3) + '...@'
-    let part2 = splitted[1]
-    let concat = part1sliced + part2
+const MyUser = (props) => {
+    console.log(props)
+
+    const { name, photo } = props.user
 
     return (
-        <div>
-            <ul className='collection'>
-                <li className="collection-item avatar">
-                    <img src={porps.photo} alt="" className="circle" />
-                    <span className="title">{porps.name}</span>
-                    <p>{concat}<br />
-                        {porps.date}
-                    </p>
-                </li>
-            </ul>
-        </div>
+
+        <ul className='collection'>
+            <li className="collection-item avatar">
+                <img src={photo} alt="" className="circle" />
+                <span className="title">{name}</span>
+                <p>{props.user.getHiddenEmail()}<br />
+                    {props.user.getDate()}
+                </p>
+            </li>
+        </ul>
 
     )
+
 }
-export { MyUser }
+
+const MyUserGrid = (props) => {
+
+    const { name, photo, email, date } = props.user
+    return (
+
+        <div class="col s12 m4 l3">
+            <div class="card">
+                <div class="card-image">
+                    <img src={photo} />
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+
+
+    )
+
+
+}
+
+export { MyUser, MyUserGrid }
