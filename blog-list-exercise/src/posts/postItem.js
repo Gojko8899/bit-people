@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const PostItem = ({title, body}) => {
-    
+
+const PostItem = ({ title, body }) => {
+
     return (
 
         <div style={{ backgroundColor: "lightblue", margin: '10px', padding: '10px' }}>
@@ -27,3 +28,4 @@ PostItem.defaultProps = {
 
 
 export { PostItem }
+
